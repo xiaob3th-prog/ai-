@@ -53,7 +53,7 @@ const ManualCallPage: React.FC = () => {
                       <li><strong>跳转</strong>：点击姓名，新标签页打开CMS用户详情页。</li>
                   </ul>
               </li>
-              <li><strong>数据源限制</strong>：仅显示 <code>未签约</code> AND <code>销售为空</code> AND 未进行过自动外呼或者自动外呼过但是未接通 AND <code>类型=个人</code> 的用户。</li>
+              <li><strong>数据源限制</strong>：仅显示 <code>未签约</code> AND <code>销售为空</code> AND 未进行过自动外呼或者自动外呼过但是未接通 AND <code>类型=个人</code> <strong>AND 用户没有除系统外的备注记录</strong> 的用户。</li>
               <li><strong>发起外呼交互</strong>：
                   <ul className="list-[circle] pl-5 mt-1 space-y-1 text-gray-600">
                       <li><strong>按钮状态</strong>：

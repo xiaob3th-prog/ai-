@@ -95,7 +95,7 @@ const PRDPage: React.FC<PRDPageProps> = ({ onNavigate }) => {
             <li><strong>数据抓取范围</strong>：
                 <ul className="list-circle pl-6 mt-1">
                     <li>时间窗口：<code>[当前时间-1小时, 当前时间-30分钟]</code> 。</li>
-                    <li>用户筛选条件：类型=个人 AND 签约状态=未签约 AND 销售归属=NULL。</li>
+                    <li>用户筛选条件：类型=个人 AND 签约状态=未签约 AND 销售归属=NULL <strong>AND 用户没有除系统外的备注记录</strong>。</li>
                 </ul>
             </li>
             <li><strong>执行动作</strong>：
@@ -124,7 +124,7 @@ const PRDPage: React.FC<PRDPageProps> = ({ onNavigate }) => {
                     <li><strong>跳转</strong>：点击姓名，新标签页打开CMS用户详情页。</li>
                 </ul>
             </li>
-            <li><strong>数据源限制</strong>：仅显示 <code>未签约</code> AND <code>销售为空</code> AND 未进行过自动外呼或者自动外呼过但是未接通 AND <code>类型=个人</code> 的用户。</li>
+            <li><strong>数据源限制</strong>：仅显示 <code>未签约</code> AND <code>销售为空</code> AND 未进行过自动外呼或者自动外呼过但是未接通 AND <code>类型=个人</code> <strong>AND 用户没有除系统外的备注记录</strong> 的用户。</li>
             <li><strong>发起外呼交互</strong>：
                 <ul className="list-circle pl-6 mt-1 text-gray-600">
                     <li><strong>按钮状态</strong>：
