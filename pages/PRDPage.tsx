@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card } from '../components/UIComponents';
 import { ExternalLink } from 'lucide-react';
@@ -147,7 +148,7 @@ const PRDPage: React.FC<PRDPageProps> = ({ onNavigate }) => {
                 <ul className="list-circle pl-6 mt-1 text-gray-600">
                     <li>任务ID、任务名称。</li>
                     <li>任务状态：未启动、执行中、已暂停、已完成。</li>
-                    <li>创建时间、号码量、外呼量、呼通量、呼通率 (呼通量/外呼量)、签约量。</li>
+                    <li>创建时间、号码量、外呼量、呼通量、呼通率 (呼通量/外呼量)、<strong>分配销售量</strong>、签约量。</li>
                     <li><strong>操作</strong>：[暂停]、[继续] (仅针对执行中/暂停状态)。点击暂停、继续调用任务状态变更接口。</li>
                 </ul>
             </li>
@@ -163,7 +164,7 @@ const PRDPage: React.FC<PRDPageProps> = ({ onNavigate }) => {
                 <ul className="list-circle pl-6 mt-1 text-gray-600">
                     <li>基础信息：任务名称、机器人名称、手机号码、外呼时间。</li>
                     <li>状态信息：执行状态 (待执行/已执行)、外呼结果 (已接通/未接通)、未接通原因 (空号、拒接、超时等)、呼叫类型 (首次呼叫/重试/预约呼叫)。</li>
-                    <li>业务信息：标签抽取 (百度AI提取的意向标签)、签约状态 (未签约/已签约/已解约)、对话时长。</li>
+                    <li>业务信息：标签抽取 (百度AI提取的意向标签)、<strong>分配销售 (显示姓名，未分配为空)</strong>、签约状态 (未签约/已签约/已解约)、对话时长。</li>
                 </ul>
             </li>
             <li><strong>操作</strong>：<strong>查看详情</strong>（仅“已接通”显示）。点击弹窗展示 <strong>对话原文</strong> (Chat Log)。</li>

@@ -1,3 +1,4 @@
+
 export interface Robot {
   id: string;
   name: string;
@@ -12,6 +13,7 @@ export interface Task {
   totalNumbers: number;
   calledCount: number;
   connectedCount: number;
+  assignedCount: number; // New field: quantity of leads assigned to sales
   signedCount: number;
 }
 
@@ -26,6 +28,7 @@ export interface CallRecord {
   failReason?: string;
   callType: 'first' | 'retry' | 'appointment';
   tags: string[];
+  assignedSales?: string; // New field: name of the assigned sales agent
   signStatus: 'unsigned' | 'signed' | 'cancelled';
   duration: string; // "01:23"
   chatLog?: ChatMessage[];

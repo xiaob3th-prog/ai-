@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, Badge, PrdInfo, Button } from '../components/UIComponents';
 import { Play, Pause, Search } from 'lucide-react';
@@ -5,9 +6,9 @@ import { Task } from '../types';
 
 const TaskListPage: React.FC = () => {
   const tasks: Task[] = [
-    { id: 'T_20231024_01', name: '自动创建_202310240900', status: 'running', createTime: '2023-10-24 09:00:00', totalNumbers: 50, calledCount: 25, connectedCount: 15, signedCount: 2 },
-    { id: 'T_20231024_02', name: '手动创建_202310241030', status: 'paused', createTime: '2023-10-24 10:30:00', totalNumbers: 200, calledCount: 100, connectedCount: 40, signedCount: 5 },
-    { id: 'T_20231023_05', name: '自动创建_202310231800', status: 'completed', createTime: '2023-10-23 18:00:00', totalNumbers: 120, calledCount: 120, connectedCount: 80, signedCount: 12 },
+    { id: 'T_20231024_01', name: '自动创建_202310240900', status: 'running', createTime: '2023-10-24 09:00:00', totalNumbers: 50, calledCount: 25, connectedCount: 15, assignedCount: 8, signedCount: 2 },
+    { id: 'T_20231024_02', name: '手动创建_202310241030', status: 'paused', createTime: '2023-10-24 10:30:00', totalNumbers: 200, calledCount: 100, connectedCount: 40, assignedCount: 15, signedCount: 5 },
+    { id: 'T_20231023_05', name: '自动创建_202310231800', status: 'completed', createTime: '2023-10-23 18:00:00', totalNumbers: 120, calledCount: 120, connectedCount: 80, assignedCount: 35, signedCount: 12 },
   ];
 
   const getStatusType = (status: Task['status']) => {
@@ -41,7 +42,7 @@ const TaskListPage: React.FC = () => {
                     <ul className="list-[circle] pl-5 mt-1 space-y-1 text-gray-600">
                         <li>任务ID、任务名称。</li>
                         <li>任务状态：未启动、执行中、已暂停、已完成。</li>
-                        <li>创建时间、号码量、外呼量、呼通量、呼通率 (呼通量/外呼量)、签约量。</li>
+                        <li>创建时间、号码量、外呼量、呼通量、呼通率 (呼通量/外呼量)、<strong>分配销售量</strong>、签约量。</li>
                         <li><strong>操作</strong>：[暂停]、[继续] (仅针对执行中/暂停状态)。
                             <br/> * 点击暂停、继续调用任务状态变更接口。
                         </li>
@@ -76,6 +77,7 @@ const TaskListPage: React.FC = () => {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">状态</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">进度 (已呼/总数)</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">呼通率</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">分配销售量</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">签约量</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">操作</th>
               </tr>
@@ -103,6 +105,7 @@ const TaskListPage: React.FC = () => {
                     {task.calledCount > 0 ? ((task.connectedCount / task.calledCount) * 100).toFixed(1) : 0}%
                     <span className="text-xs text-gray-500 ml-1">({task.connectedCount})</span>
                   </td>
+                  <td className="px-6 py-4 text-sm font-medium text-blue-600">{task.assignedCount}</td>
                   <td className="px-6 py-4 text-sm font-medium text-green-600">{task.signedCount}</td>
                   <td className="px-6 py-4 text-sm font-medium">
                     {task.status === 'running' && (

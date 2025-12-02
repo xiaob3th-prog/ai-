@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, Badge, Button, PrdInfo, Modal } from '../components/UIComponents';
 import { Search, Bot, User } from 'lucide-react';
@@ -17,6 +18,7 @@ const CallResultPage: React.FC = () => {
       result: 'connected',
       callType: 'first',
       tags: ['意向-高', '个人', '咨询报价'],
+      assignedSales: '王小二',
       signStatus: 'unsigned',
       duration: '02:15',
       chatLog: [
@@ -39,6 +41,7 @@ const CallResultPage: React.FC = () => {
       failReason: '拒接',
       callType: 'first',
       tags: [],
+      assignedSales: undefined,
       signStatus: 'unsigned',
       duration: '00:00'
     },
@@ -52,6 +55,7 @@ const CallResultPage: React.FC = () => {
       result: 'connected',
       callType: 'retry',
       tags: ['意向-中', '企业'],
+      assignedSales: '张大伟',
       signStatus: 'signed',
       duration: '01:45',
       chatLog: [
@@ -85,6 +89,7 @@ const CallResultPage: React.FC = () => {
                         <li>业务信息：
                             <ul className="list-[square] pl-5 mt-1">
                                 <li>标签抽取：(百度AI提取的意向标签)。</li>
+                                <li><strong>分配销售：显示姓名，未分配为空。</strong></li>
                                 <li>签约状态：未签约/已签约/已解约 (读取实时用户状态)。</li>
                                 <li>对话时长。</li>
                             </ul>
@@ -147,6 +152,7 @@ const CallResultPage: React.FC = () => {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">呼叫类型</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">时长</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">AI标签</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">分配销售</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">签约状态</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase whitespace-nowrap">操作</th>
               </tr>
@@ -182,6 +188,9 @@ const CallResultPage: React.FC = () => {
                             <span key={tag} className="px-2 py-0.5 bg-blue-50 text-blue-700 text-xs rounded border border-blue-100">{tag}</span>
                         ))}
                     </div>
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-800">
+                    {record.assignedSales || '-'}
                   </td>
                   <td className="px-6 py-4">
                     <span className={`text-sm ${record.signStatus === 'signed' ? 'text-green-600 font-bold' : 'text-gray-500'}`}>
