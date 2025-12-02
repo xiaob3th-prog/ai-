@@ -88,14 +88,14 @@ const ManualCallPage: React.FC = () => {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">注册时间段</label>
                 <div className="flex items-center space-x-2">
-                    <input type="date" className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500" />
+                    <input type="date" className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-primary-500 focus:border-primary-500" />
                     <span className="text-gray-500">-</span>
-                    <input type="date" className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500" />
+                    <input type="date" className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-primary-500 focus:border-primary-500" />
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">外呼状态</label>
-                <select className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                <select className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-primary-500 focus:border-primary-500">
                     <option value="">全部</option>
                     <option value="none">未外呼过</option>
                     <option value="failed">外呼过且未接通</option>
@@ -115,7 +115,7 @@ const ManualCallPage: React.FC = () => {
             <h3 className="text-lg font-medium text-gray-900">筛选结果</h3>
             <div className="flex items-center space-x-4">
                 <span className="text-sm text-gray-500">
-                    当前筛选选中：<span className="text-blue-600 font-bold">{selectedCount}</span> 人
+                    当前筛选选中：<span className="text-primary-600 font-bold">{selectedCount}</span> 人
                 </span>
                 <Button 
                     onClick={handleCreateTask}
@@ -141,7 +141,7 @@ const ManualCallPage: React.FC = () => {
               {users.map((user) => (
                 <tr key={user.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 text-sm text-gray-900">{user.id}</td>
-                  <td className="px-6 py-4 text-sm text-blue-600 cursor-pointer hover:underline">{user.name}</td>
+                  <td className="px-6 py-4 text-sm text-primary-600 cursor-pointer hover:underline">{user.name}</td>
                   <td className="px-6 py-4 text-sm text-gray-500">{user.phone}</td>
                   <td className="px-6 py-4 text-sm text-gray-500">{user.regTime}</td>
                   <td className="px-6 py-4">
@@ -156,7 +156,7 @@ const ManualCallPage: React.FC = () => {
         <div className="px-6 py-4 border-t border-gray-200 flex justify-end">
             <div className="flex space-x-2">
                 <button className="px-3 py-1 border rounded text-gray-500 disabled:opacity-50">上一页</button>
-                <button className="px-3 py-1 border rounded bg-blue-50 text-blue-600">1</button>
+                <button className="px-3 py-1 border rounded bg-primary-50 text-primary-600">1</button>
                 <button className="px-3 py-1 border rounded text-gray-500">2</button>
                 <button className="px-3 py-1 border rounded text-gray-500">下一页</button>
             </div>
@@ -188,14 +188,14 @@ const ManualCallPage: React.FC = () => {
             <div className="grid grid-cols-2 gap-4">
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">机器人话术</label>
-                    <select className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                    <select className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-primary-500 focus:border-primary-500">
                         <option>新用户激活_标准版_V1</option>
                         <option>沉默用户召回_V2</option>
                     </select>
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">外呼时间段</label>
-                    <select className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                    <select className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-primary-500 focus:border-primary-500">
                         <option>早九晚六 (09:00~18:00)</option>
                         <option>早九晚五 (09:00~17:00)</option>
                         <option>早十晚六 (10:00~18:00)</option>
@@ -204,7 +204,7 @@ const ManualCallPage: React.FC = () => {
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">呼叫周期</label>
-                    <select className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                    <select className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-primary-500 focus:border-primary-500">
                         <option>所有自然日</option>
                         <option>仅工作日</option>
                         <option>仅周末</option>
@@ -212,7 +212,7 @@ const ManualCallPage: React.FC = () => {
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">午休禁呼</label>
-                    <select className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                    <select className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-primary-500 focus:border-primary-500">
                         <option>午休1小时 (12:00-13:00)</option>
                         <option>午休2小时 (12:00-14:00)</option>
                         <option>不午休</option>
@@ -228,8 +228,8 @@ const ManualCallPage: React.FC = () => {
                         <span className="text-xs text-gray-600 mr-2">{retryEnabled ? '开启' : '关闭'}</span>
                         <button
                         onClick={() => setRetryEnabled(!retryEnabled)}
-                        className={`relative inline-flex h-4 w-8 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                            retryEnabled ? 'bg-blue-600' : 'bg-gray-200'
+                        className={`relative inline-flex h-4 w-8 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
+                            retryEnabled ? 'bg-primary-600' : 'bg-gray-200'
                         }`}
                         >
                         <span
@@ -267,7 +267,7 @@ const ManualCallPage: React.FC = () => {
             </div>
 
             <div className="flex items-center pt-2">
-                <input type="checkbox" id="record" defaultChecked className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+                <input type="checkbox" id="record" defaultChecked className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded" />
                 <label htmlFor="record" className="ml-2 block text-sm text-gray-900">开启全程录音</label>
             </div>
         </div>

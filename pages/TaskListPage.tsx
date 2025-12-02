@@ -97,7 +97,7 @@ const TaskListPage: React.FC = () => {
                     <div className="flex items-center">
                         <span className="text-sm text-gray-900 mr-2">{task.calledCount} / {task.totalNumbers}</span>
                         <div className="w-24 bg-gray-200 rounded-full h-1.5">
-                            <div className="bg-blue-600 h-1.5 rounded-full" style={{ width: `${(task.calledCount / task.totalNumbers) * 100}%` }}></div>
+                            <div className="bg-primary-600 h-1.5 rounded-full" style={{ width: `${(task.calledCount / task.totalNumbers) * 100}%` }}></div>
                         </div>
                     </div>
                   </td>
@@ -105,7 +105,7 @@ const TaskListPage: React.FC = () => {
                     {task.calledCount > 0 ? ((task.connectedCount / task.calledCount) * 100).toFixed(1) : 0}%
                     <span className="text-xs text-gray-500 ml-1">({task.connectedCount})</span>
                   </td>
-                  <td className="px-6 py-4 text-sm font-medium text-blue-600">{task.assignedCount}</td>
+                  <td className="px-6 py-4 text-sm font-medium text-primary-600">{task.assignedCount}</td>
                   <td className="px-6 py-4 text-sm font-medium text-green-600">{task.signedCount}</td>
                   <td className="px-6 py-4 text-sm font-medium">
                     {task.status === 'running' && (

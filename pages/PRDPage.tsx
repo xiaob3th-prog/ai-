@@ -9,7 +9,7 @@ interface PRDPageProps {
 
 const PRDPage: React.FC<PRDPageProps> = ({ onNavigate }) => {
   const LinkHeader: React.FC<{ title: string; target: string; id: string }> = ({ title, target, id }) => (
-    <h3 className="text-xl font-bold mt-8 mb-3 border-l-4 border-blue-500 pl-3 flex items-center group cursor-pointer hover:text-blue-700" onClick={() => onNavigate(target)}>
+    <h3 className="text-xl font-bold mt-8 mb-3 border-l-4 border-primary-500 pl-3 flex items-center group cursor-pointer hover:text-primary-700" onClick={() => onNavigate(target)}>
       {id}. {title}
       <ExternalLink className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
     </h3>
@@ -41,19 +41,19 @@ const PRDPage: React.FC<PRDPageProps> = ({ onNavigate }) => {
           </ul>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">2. 业务流程图 (逻辑描述)</h2>
-          <div className="bg-blue-50 p-6 rounded-lg border border-blue-100 space-y-4 mb-6">
+          <div className="bg-primary-50 p-6 rounded-lg border border-primary-100 space-y-4 mb-6">
             <div className="mb-4">
-              <span className="font-bold text-blue-800 block mb-1">1. 新用户流：</span>
+              <span className="font-bold text-primary-800 block mb-1">1. 新用户流：</span>
               <span className="text-gray-700">用户注册 -&gt; 满足定时条件(每30min) -&gt; 校验规则(未签约/无销售/个人) -&gt; <strong>创建自动外呼任务</strong> -&gt; 百度AI外呼 -&gt; 回调结果 -&gt; <strong>抽取标签</strong> -&gt; <strong>自动分配销售</strong> -&gt; 销售跟进。</span>
             </div>
             <div>
-              <span className="font-bold text-blue-800 block mb-1">2. 老用户流：</span>
+              <span className="font-bold text-primary-800 block mb-1">2. 老用户流：</span>
               <span className="text-gray-700">运营手动筛选 -&gt; 校验规则(未外呼/未接通) -&gt; <strong>创建手动外呼任务</strong> -&gt; 百度AI外呼 -&gt; 回调结果 -&gt; <strong>抽取标签</strong> -&gt; <strong>自动分配销售</strong> -&gt; 销售跟进。</span>
             </div>
           </div>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">3. 功能模块详情</h2>
-          <p className="mb-4 text-sm text-gray-500">百度接口文档：<a href="https://cloud.baidu.com/doc/ky/s/rmfnjpj48" className="text-blue-600 hover:underline" target="_blank" rel="noreferrer">https://cloud.baidu.com/doc/ky/s/rmfnjpj48</a></p>
+          <p className="mb-4 text-sm text-gray-500">百度接口文档：<a href="https://cloud.baidu.com/doc/ky/s/rmfnjpj48" className="text-primary-600 hover:underline" target="_blank" rel="noreferrer">https://cloud.baidu.com/doc/ky/s/rmfnjpj48</a></p>
           
           <LinkHeader id="3.1" title="机器人列表页" target="robots" />
           <ul className="list-disc pl-6 space-y-2 mb-4">
@@ -89,7 +89,7 @@ const PRDPage: React.FC<PRDPageProps> = ({ onNavigate }) => {
             <li><strong>保存验证</strong>：点击保存时校验必填项，未填项红框高亮提示。</li>
           </ul>
 
-          <h3 className="text-xl font-bold mt-8 mb-3 border-l-4 border-blue-500 pl-3">3.3. 定时任务脚本 (后端逻辑)</h3>
+          <h3 className="text-xl font-bold mt-8 mb-3 border-l-4 border-primary-500 pl-3">3.3. 定时任务脚本 (后端逻辑)</h3>
           <ul className="list-disc pl-6 space-y-2 mb-4 bg-gray-50 p-4 rounded">
             <li><strong>触发机制</strong>：每30分钟执行一次 (Crontab)。</li>
             <li><strong>前置校验</strong>：检查“自动外呼规则”总开关是否开启，关闭则跳过。</li>
@@ -104,11 +104,15 @@ const PRDPage: React.FC<PRDPageProps> = ({ onNavigate }) => {
                     <li>若数据为空：结束本次任务。</li>
                     <li>若有数据：
                         <ol className="list-decimal pl-6 mt-1">
-                            <li>调用百度接口创建任务，任务名：<code>自动创建_yyyyMMddHHmmss</code>。</li>
-                            <li>参数配置：读取“自动外呼规则配置”中的参数（是否录音=是）。</li>
-                            <li>导入名单：传入抓取到的手机号列表。</li>
-                            <li>启动任务：变更任务状态为“执行中”。</li>
-                            <li>写入本地任务记录表。</li>
+                            <li><strong>任务检查与创建</strong>：检查当天是否已存在任务名为 <code>自动创建_yyyyMMdd</code> (如 <code>自动创建_20251202</code>) 的任务。
+                                <ul className="list-[square] pl-6 mt-1 text-gray-600">
+                                    <li>若<strong>不存在</strong>：调用百度接口创建新任务，任务名为 <code>自动创建_yyyyMMdd</code>。参数配置读取“自动外呼规则配置”中的参数（是否录音=是）。</li>
+                                    <li>若<strong>已存在</strong>：不再创建新任务，直接复用该任务ID。</li>
+                                </ul>
+                            </li>
+                            <li><strong>导入名单</strong>：将抓取到的手机号列表导入到该任务中。</li>
+                            <li><strong>启动/更新状态</strong>：变更任务状态为“执行中”。</li>
+                            <li><strong>记录日志</strong>：写入本地任务记录表（记录本次批次导入情况）。</li>
                         </ol>
                     </li>
                 </ul>
@@ -171,7 +175,7 @@ const PRDPage: React.FC<PRDPageProps> = ({ onNavigate }) => {
             <li><strong>筛选条件</strong>：任务名称 (模糊)、手机号 (精确)、外呼时间段、外呼结果、标签抽取 (模糊)、签约状态 (多选)。</li>
           </ul>
 
-          <h3 className="text-xl font-bold mt-8 mb-3 border-l-4 border-blue-500 pl-3">3.7. 核心业务逻辑：自动分配</h3>
+          <h3 className="text-xl font-bold mt-8 mb-3 border-l-4 border-primary-500 pl-3">3.7. 核心业务逻辑：自动分配</h3>
           <div className="bg-yellow-50 p-4 rounded border border-yellow-100 mb-6">
             <div className="font-bold mb-2">触发时机：接收到外呼结果回调，且外呼结果=已接通。</div>
             <ul className="list-disc pl-5 space-y-2 text-sm">
@@ -196,7 +200,7 @@ const PRDPage: React.FC<PRDPageProps> = ({ onNavigate }) => {
             </ul>
           </div>
 
-          <h3 className="text-xl font-bold mt-8 mb-3 border-l-4 border-blue-500 pl-3">3.8. 系统备注逻辑</h3>
+          <h3 className="text-xl font-bold mt-8 mb-3 border-l-4 border-primary-500 pl-3">3.8. 系统备注逻辑</h3>
           <ul className="list-disc pl-6 space-y-2 mb-4">
             <li><strong>触发时机</strong>：外呼结果=已接通。</li>
             <li><strong>执行动作</strong>：在用户画像/CRM系统的“备注”模块插入一条记录。</li>

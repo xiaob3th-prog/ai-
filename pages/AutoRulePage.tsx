@@ -73,8 +73,8 @@ const AutoRulePage: React.FC = () => {
             </span>
             <button
               onClick={() => setEnabled(!enabled)}
-              className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                enabled ? 'bg-blue-600' : 'bg-gray-200'
+              className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
+                enabled ? 'bg-primary-600' : 'bg-gray-200'
               }`}
             >
               <span
@@ -89,11 +89,11 @@ const AutoRulePage: React.FC = () => {
         <div className={`p-8 space-y-8 ${!enabled ? 'opacity-50 pointer-events-none' : ''}`}>
           {/* Section 1: Basic Config */}
           <section className="space-y-6">
-            <h3 className="text-base font-semibold text-gray-900 border-l-4 border-blue-500 pl-3">基础配置</h3>
+            <h3 className="text-base font-semibold text-gray-900 border-l-4 border-primary-500 pl-3">基础配置</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">选择机器人 <span className="text-red-500">*</span></label>
-                <select className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md border">
+                <select className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md border">
                   <option>新用户激活_标准版_V1</option>
                   <option>沉默用户召回_V2</option>
                 </select>
@@ -101,7 +101,7 @@ const AutoRulePage: React.FC = () => {
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">呼叫周期 <span className="text-red-500">*</span></label>
-                <select className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md border">
+                <select className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md border">
                   <option>所有自然日</option>
                   <option>仅工作日</option>
                   <option>仅周末</option>
@@ -110,7 +110,7 @@ const AutoRulePage: React.FC = () => {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">外呼时间段 <span className="text-red-500">*</span></label>
-                <select className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md border">
+                <select className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md border">
                   <option>早九晚六 (09:00~18:00)</option>
                   <option>早九晚五 (09:00~17:00)</option>
                   <option>早十晚六 (10:00~18:00)</option>
@@ -120,7 +120,7 @@ const AutoRulePage: React.FC = () => {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">午休禁呼 <span className="text-red-500">*</span></label>
-                <select className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md border">
+                <select className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md border">
                   <option>午休1小时 (12:00-13:00)</option>
                   <option>午休2小时 (12:00-14:00)</option>
                   <option>不午休</option>
@@ -132,13 +132,13 @@ const AutoRulePage: React.FC = () => {
           {/* Section 2: Retry Config */}
           <section className="space-y-6 pt-6 border-t border-gray-100">
              <div className="flex items-center justify-between">
-                <h3 className="text-base font-semibold text-gray-900 border-l-4 border-blue-500 pl-3">自动重播策略</h3>
+                <h3 className="text-base font-semibold text-gray-900 border-l-4 border-primary-500 pl-3">自动重播策略</h3>
                 <div className="flex items-center">
                     <span className="text-sm text-gray-600 mr-2">{retryEnabled ? '开启' : '关闭'}</span>
                     <button
                     onClick={() => setRetryEnabled(!retryEnabled)}
-                    className={`relative inline-flex h-5 w-9 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                        retryEnabled ? 'bg-blue-600' : 'bg-gray-200'
+                    className={`relative inline-flex h-5 w-9 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
+                        retryEnabled ? 'bg-primary-600' : 'bg-gray-200'
                     }`}
                     >
                     <span
@@ -158,10 +158,10 @@ const AutoRulePage: React.FC = () => {
                             <span className="text-sm text-gray-600 mr-2">呼叫失败后等待</span>
                             <input 
                                 type="number" 
-                                className="w-20 border border-gray-300 rounded-md px-2 py-1 text-sm focus:ring-blue-500 focus:border-blue-500"
+                                className="w-20 border border-gray-300 rounded-md px-2 py-1 text-sm focus:ring-primary-500 focus:border-primary-500"
                                 defaultValue={rule.delayValue}
                             />
-                            <select className="ml-2 border border-gray-300 rounded-md px-2 py-1 text-sm focus:ring-blue-500 focus:border-blue-500">
+                            <select className="ml-2 border border-gray-300 rounded-md px-2 py-1 text-sm focus:ring-primary-500 focus:border-primary-500">
                                 <option value="minute">分钟</option>
                                 <option value="hour">小时</option>
                             </select>

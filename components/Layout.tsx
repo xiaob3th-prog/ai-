@@ -24,8 +24,8 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, onNavigate }) => 
       {/* Sidebar */}
       <div className={`bg-white border-r border-gray-200 flex flex-col transition-all duration-300 ${collapsed ? 'w-16' : 'w-64'}`}>
         <div className="h-16 flex items-center justify-center border-b border-gray-100 px-4">
-          {!collapsed && <span className="text-xl font-bold text-blue-600 truncate">AI自动外呼</span>}
-          {collapsed && <span className="text-xl font-bold text-blue-600">AI</span>}
+          {!collapsed && <span className="text-xl font-bold text-primary-600 truncate">AI自动外呼</span>}
+          {collapsed && <span className="text-xl font-bold text-primary-600">AI</span>}
         </div>
 
         <nav className="flex-1 overflow-y-auto py-4">
@@ -36,7 +36,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, onNavigate }) => 
                   onClick={() => onNavigate(item.id)}
                   className={`w-full flex items-center px-4 py-3 rounded-lg transition-colors ${
                     activePage === item.id
-                      ? 'bg-blue-50 text-blue-600'
+                      ? 'bg-primary-50 text-primary-600'
                       : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
                   }`}
                 >
@@ -69,7 +69,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activePage, onNavigate }) => 
               <span className="h-2 w-2 rounded-full bg-green-500"></span>
               <span className="text-sm text-gray-500">系统运行正常</span>
             </div>
-            <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold border border-blue-200">
+            <div className="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 font-bold border border-primary-200">
               A
             </div>
           </div>

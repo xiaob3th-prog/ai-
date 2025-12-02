@@ -10,10 +10,10 @@ export const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & { 
   const baseStyles = "px-4 py-2 rounded-md font-medium text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
   
   const variants = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
-    secondary: "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-blue-500",
+    primary: "bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500",
+    secondary: "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-primary-500",
     danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
-    outline: "bg-transparent text-blue-600 border border-blue-600 hover:bg-blue-50 focus:ring-blue-500"
+    outline: "bg-transparent text-primary-600 border border-primary-600 hover:bg-primary-50 focus:ring-primary-500"
   };
 
   return (
@@ -48,19 +48,19 @@ export const PrdInfo: React.FC<{ title: string; content: React.ReactNode }> = ({
   const [isOpen, setIsOpen] = React.useState(true);
 
   return (
-    <div className="mb-6 bg-blue-50 border border-blue-100 rounded-lg overflow-hidden">
+    <div className="mb-6 bg-primary-50 border border-primary-100 rounded-lg overflow-hidden">
       <div 
-        className="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-colors"
+        className="px-4 py-3 flex items-center justify-between cursor-pointer hover:bg-primary-100 transition-colors"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <div className="flex items-center space-x-2 text-blue-800">
+        <div className="flex items-center space-x-2 text-primary-800">
           <Info className="h-5 w-5" />
           <span className="font-semibold text-sm">PRD 页面说明: {title}</span>
         </div>
-        <span className="text-blue-600 text-xs">{isOpen ? '收起' : '展开'}</span>
+        <span className="text-primary-600 text-xs">{isOpen ? '收起' : '展开'}</span>
       </div>
       {isOpen && (
-        <div className="px-4 py-3 text-sm text-blue-900 border-t border-blue-100 bg-blue-50/50">
+        <div className="px-4 py-3 text-sm text-primary-900 border-t border-primary-100 bg-primary-50/50">
           {content}
         </div>
       )}
