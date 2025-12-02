@@ -1,64 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI自动外呼系统</title>
-    <!-- 1. 暂时移除Tailwind CDN，避免潜在干扰 -->
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
-      /* 2. 为根容器添加一个明显的临时样式，方便确认渲染成功 */
-      #root {
-        border: 2px dashed #4CAF50; /* 绿色虚线边框 */
-        padding: 20px;
-        margin: 20px;
-        min-height: 400px;
-      }
+      /* Custom scrollbar for chat logs */
+      .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 3px; }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
     </style>
-    <!-- 3. 保留import map，它定义了React等库从哪里获取 -->
-    <script type="importmap">
-    {
-      "imports": {
-        "react": "https://aistudiocdn.com/react@^19.2.0",
-        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-        "react/": "https://aistudiocdn.com/react@^19.2.0/",
-        "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
-      }
-    }
-    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
 </head>
-<body>
-    <!-- 4. 这是最关键的：React应用需要挂载的根节点 -->
-    <div id="root">
-        <!-- 初始加载提示，React渲染后会替换此内容 -->
-        <p style="color: #666; text-align: center;">正在加载AI自动外呼系统...</p>
-    </div>
-
-    <!-- 5. 这是第二个关键：通过模块导入你的React应用主入口文件 -->
-    <!-- 假设你的主文件是 index.tsx，并且与index.html在同一目录 -->
-    <script type="module">
-        import React from 'react';
-        import ReactDOM from 'react-dom/client';
-        // 注意：这里需要导入你的主组件，请根据你的项目结构调整路径
-        // 如果主组件是 App.tsx，并且在同一目录，则如下：
-        import App from './App.js'; // 即使源文件是.tsx，在import map中映射后也写.js
-
-        console.log('开始挂载React应用...');
-        const rootElement = document.getElementById('root');
-        if (rootElement) {
-          const root = ReactDOM.createRoot(rootElement);
-          root.render(
-            React.createElement(React.StrictMode, null,
-              React.createElement(App)
-            )
-          );
-          console.log('React应用已挂载！');
-        } else {
-          console.error('错误：未找到ID为"root"的挂载元素！');
-        }
-    </script>
-</body>
+  <body>
+    <div id="root"></div>
+    <script type = "module" src = "/index.tsx"></script>
+  </body>
 </html>
